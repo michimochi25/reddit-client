@@ -1,20 +1,107 @@
-
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+
+$reddit-palette: (
+  (
+    0: #000000,
+    10: #330f00,
+    20: #661f00,
+    25: #802900,
+    30: #993300,
+    35: #b13d00,
+    40: #cc4600,
+    50: #ff4500,
+    // Reddit orange
+    60: #ff7a4d,
+    70: #ffab8c,
+    80: #ffc9b3,
+    90: #ffe6db,
+    95: #fff2ec,
+    98: #fff9f7,
+    99: #fffbff,
+    100: #ffffff,
+    secondary: (
+      0: #000000,
+      10: #1a0f0c,
+      20: #33261a,
+      25: #402d23,
+      30: #4d382d,
+      35: #5a4336,
+      40: #674f40,
+      50: #805c4d,
+      60: #99866e,
+      70: #b3a393,
+      80: #ccbeb8,
+      90: #e6e1de,
+      95: #f2eeeb,
+      98: #faf7f6,
+      99: #fffbff,
+      100: #ffffff,
+    ),
+    neutral: (
+      0: #000000,
+      10: #1c1c1c,
+      20: #333333,
+      25: #404040,
+      30: #4d4d4d,
+      35: #595959,
+      40: #666666,
+      50: #808080,
+      60: #999999,
+      70: #b3b3b3,
+      80: #cccccc,
+      90: #e6e6e6,
+      95: #f2f2f2,
+      98: #fafafa,
+      99: #fffbff,
+      100: #ffffff,
+      4: #0d0d0d,
+      6: #121212,
+      12: #1f1f1f,
+      17: #2a2a2a,
+      22: #353535,
+      24: #393939,
+      87: #e0e0e0,
+      92: #f0f0f0,
+      94: #f6f6f6,
+      96: #fcfcfc,
+    ),
+    neutral-variant: (
+      0: #000000,
+      10: #1f1a18,
+      20: #362e2b,
+      25: #433935,
+      30: #514441,
+      35: #5e504d,
+      40: #6b5c59,
+      50: #85726e,
+      60: #9f8c88,
+      70: #baa7a3,
+      80: #d6c2be,
+      90: #f3ddd9,
+      95: #fff2ec,
+      98: #fff9f7,
+      99: #fffbff,
+      100: #ffffff,
+    ),
+  )
+);
 
 html {
-  @include mat.theme((
-    color: (
-      primary: mat.$rose-palette,
-      tertiary: mat.$red-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        primary: $reddit-palette,
+        tertiary: $reddit-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
 body {
