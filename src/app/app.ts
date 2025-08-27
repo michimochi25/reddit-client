@@ -39,11 +39,5 @@ export class App {
         subreddit: this.subreddit(),
       },
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.subreddit.set(result);
-      }
-    });
   }
 }
