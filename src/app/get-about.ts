@@ -6,6 +6,11 @@ import { environment } from '../environments/environment';
 })
 export class GetAbout {
   async getAbout(subreddit: string): Promise<any> {
+    console.log('🔍 Environment check:');
+    console.log('  environment.production:', environment.production);
+    console.log('  window.location.hostname:', window.location.hostname);
+    console.log('  NODE_ENV:', (window as any).NODE_ENV);
+
     let baseUrl = '';
     if (environment.production) {
       // Production: use query parameter
