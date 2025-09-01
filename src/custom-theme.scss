@@ -15,7 +15,6 @@ $reddit-palette: (
     35: #b13d00,
     40: #cc4600,
     50: #ff4500,
-    // Reddit orange
     60: #ff7a4d,
     70: #ffab8c,
     80: #ffc9b3,
@@ -119,4 +118,13 @@ body {
 
   // Reset the user agent margin.
   margin: 0;
+}
+
+:root {
+  @include mat.card-overrides(
+    (
+      outlined-container-color: white,
+    )
+  );
+  --primary-color: #ff4500;
 }

@@ -5,3 +5,11 @@
 .title {
   color: #ff5700;
 }
+
+.subreddit-cards {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  flex-wrap: wrap;
+  gap: 1rem;
+}

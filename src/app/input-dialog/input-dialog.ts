@@ -1,4 +1,4 @@
-import { Component, inject, model, OnInit } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
-  MatDialogClose,
   MatDialogContent,
   MatDialogRef,
   MatDialogTitle,
@@ -27,7 +26,6 @@ export interface DialogData {
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose,
   ],
   templateUrl: './input-dialog.html',
   styleUrls: ['./input-dialog.css'],
@@ -43,12 +41,20 @@ export class InputDialog {
     this.dialogRef.close();
   }
 
-  onSubmit(): void {
-    this.service.getAbout(this.subreddit).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => console.error(error),
-    });
+  async onSubmit(): Promise<void> {
+    try {
+      const res = await this.service.getAbout(this.subreddit);
+
+      const dataToCloseWith = {
+        key: this.subreddit,
+        data: res.data.children,
+      };
+
+      // pass the complete object to the parent
+      this.dialogRef.close(dataToCloseWith);
+    } catch (error) {
+      alert('Subreddit not found or an error occurred.');
+      this.dialogRef.close();
+    }
   }
 }

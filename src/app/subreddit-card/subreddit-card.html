@@ -1,1 +1,22 @@
-<p>subreddit-card works!</p>
+<mat-card class="container" appearance="outlined">
+    <mat-card-header class="header">
+        <mat-card-title class="subreddit-title">r/{{subreddit}}</mat-card-title>
+        <div class="icons">
+            <button (click)="refresh(this.subreddit)">
+                <mat-icon fontIcon="autorenew"></mat-icon>
+            </button>
+            <button (click)="remove(this.subreddit)">
+                <mat-icon fontIcon="close"></mat-icon>
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content class="post-container">
+        <mat-list role="list" class="post-list">
+            @for (post of data ?? []; track $index) {
+            <app-subreddit-post [title]="post?.data.title" [upvotes]="post?.data.ups"></app-subreddit-post>
+            }@empty {
+            <div>No posts yet</div>
+            }
+        </mat-list>
+    </mat-card-content>
+</mat-card>

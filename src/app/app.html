@@ -3,6 +3,14 @@
   <div class="content">
     <button matButton="outlined" (click)="openDialog()">+ Add Subreddit</button>
   </div>
+  <div class="subreddit-cards">
+    @for (sub of subredditNames(); track sub) {
+    <app-subreddit-card [subreddit]="sub" [data]="subreddits()[sub]" [remove]="removeSubreddit"
+      [refresh]="refreshSubreddit"></app-subreddit-card>
+    }@empty {
+    <div>No subreddits yet</div>
+    }
+  </div>
 </main>
 
 

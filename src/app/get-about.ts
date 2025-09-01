@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetAbout {
-  constructor(private http: HttpClient) {}
-
-  getAbout(subreddit: string): Observable<any> {
-    return this.http.get(`https://www.reddit.com/r/${subreddit}/about.json`, {
-      headers: { Accept: 'application/json' },
+  async getAbout(subreddit: string): Promise<any> {
+    console.log('Calling getAbout...');
+    const res = await fetch(`/reddit/r/${subreddit}.json`, {
+      headers: {
+        Accept: 'application/json',
+      },
     });
+    return res.json();
   }
 }

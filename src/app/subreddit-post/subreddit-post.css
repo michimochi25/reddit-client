@@ -1,0 +1,23 @@
+.content {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1rem auto;
+  padding: 1rem;
+  place-items: center left;
+}
+
+.post-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.upvotes {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-direction: column;
+}
+
+p {
+  margin: 0;
+}
