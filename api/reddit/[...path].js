@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     // Make the request to Reddit's API
     const response = await fetch(`https://www.reddit.com/${redditPath}`, {
       headers: {
-        "User-Agent": "YourRedditClient/1.0 by YourUsername",
+        "User-Agent": "RedditClient/1.0 by aggielsanelle",
         Accept: "application/json",
       },
     });
