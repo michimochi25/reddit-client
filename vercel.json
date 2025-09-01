@@ -6,7 +6,7 @@
     }
   ],
   "functions": {
-    "api/reddit/[...path].js": {
+    "api/reddit/reddit.js": {
       "maxDuration": 30
     }
   }
