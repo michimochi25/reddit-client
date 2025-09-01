@@ -11,14 +11,14 @@ export class GetAbout {
     console.log('  window.location.hostname:', window.location.hostname);
     console.log('  NODE_ENV:', (window as any).NODE_ENV);
 
-    let baseUrl = '';
-    if (environment.production) {
-      // Production: use query parameter
-      baseUrl = `/api/reddit?path=r/${subreddit}.json`;
-    } else {
-      // Development: use proxy
-      baseUrl = `/reddit/r/${subreddit}.json`;
-    }
+    let baseUrl = `/api/reddit?path=r/${subreddit}.json`;
+    // if (environment.production) {
+    //   // Production: use query parameter
+    //   baseUrl = `/api/reddit?path=r/${subreddit}.json`;
+    // } else {
+    //   // Development: use proxy
+    //   baseUrl = `/reddit/r/${subreddit}.json`;
+    // }
 
     try {
       const res = await fetch(baseUrl, {
