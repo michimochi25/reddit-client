@@ -5,22 +5,18 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class GetAbout {
-  private getBaseUrl(): string {
-    if (environment.production) {
-      // In production: use Vercel serverless function
-      return '/api/reddit';
-    } else {
-      // In development: use proxy
-      return '/reddit';
-    }
-  }
-
   async getAbout(subreddit: string): Promise<any> {
-    const baseUrl = this.getBaseUrl();
-    const url = `${baseUrl}/r/${subreddit}.json`;
+    let baseUrl = '';
+    if (environment.production) {
+      // Production: use query parameter
+      baseUrl = `/api/reddit?path=r/${subreddit}.json`;
+    } else {
+      // Development: use proxy
+      baseUrl = `/reddit/r/${subreddit}.json`;
+    }
 
     try {
-      const res = await fetch(url, {
+      const res = await fetch(baseUrl, {
         headers: {
           Accept: 'application/json',
         },
